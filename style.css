@@ -1,0 +1,210 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: #E1D5AE;
+}
+
+nav{
+    background-color: #2F4F15;
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#E1D5AE;
+}
+.logo {
+    font-family: 'Jockey One', sans-serif;
+    margin-left: 5%;
+    font-size: 45px;
+    font-weight: 300;
+    font-kerning: 30px;
+}
+menu{
+    display: none;
+    list-style: none;
+    margin-right: 5%;
+    cursor: pointer;
+}
+.linea{
+    width: 100%;
+    height: 5px;
+    background-color: #E1D5AE;
+    border-radius: 5px;
+}
+
+
+
+ul{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+
+}
+.show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    background-color: #2F4F15;
+    width: 100%;
+    text-align: center;
+}
+.show a{
+    display: block;
+    margin: 15px 0px;
+    background: none;
+    color: #E1D5AE;
+    font-size: 20px;
+}
+
+
+
+a{
+    background: #E1D5AE;
+    color:#2F4F15;
+    text-align: center;
+    font-weight: bolder;
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+    max-width: 100px;
+    min-width: 50px;
+    padding: 10px 30px;
+    margin: 0px 15px;
+    border-radius: 10px;
+}
+
+header{
+    width: 100%;
+    min-height: 400px;
+    background: linear-gradient(to bottom, #55912a9d 70%, transparent),url("img/headerbg.jpg") center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.h_Title{
+    font-family: 'Jockey One', sans-serif;
+    font-size: 80px;
+    color: #E1D5AE;
+    text-align: center;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    ul{
+        display: none;
+    }
+    menu{
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 40px;
+        height: 30px;
+    }
+
+    .productos {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+}
+
+
+
+/*productos*/
+main {
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.productos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+    padding: 30px;
+}
+
+.producto_box{
+    width: 300px;
+    height: 400px;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px 20px;
+}
+.producto_box img{
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+.producto_box p{
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    margin: 10px 0px 10px 10px;
+}
+.nombre_producto {
+    font-weight: bolder;
+    color: #2F4F15;
+}
+.precio{
+    color: #55912a;
+    max-width: 50%;
+}
+.comprar{
+    position: relative;
+    left: calc(90% - 130px);
+    bottom: 5%;
+    background: #55912a;
+    color: #E1D5AE;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    border: none;
+    max-width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+footer{
+    background-color: #2F4F15;
+    color: #E1D5AE;
+    position: relative;
+    bottom: 0px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+.link  {
+    padding: 0;
+    margin: 10px 0px;
+    text-align: left;
+    color: #E1D5AE;
+    background: none;
+    text-decoration: underline;
+    width: 300px;
+}
+footer .logo{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin: 0px;
+    translate: -50%;
+}
