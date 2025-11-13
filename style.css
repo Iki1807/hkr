@@ -5,6 +5,7 @@
 html, body{
     overflow-x: hidden;
     width: 100%;
+    background-color: #E1D5AE;
 }
 nav{
     background-color: #2F4F15;
