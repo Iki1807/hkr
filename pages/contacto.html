@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .contact-form {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        .form-row .field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2F4F15;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        textarea { min-height: 100%; resize: vertical; }
+        .btn-primary {
+            background: #55912a;
+            color: #E1D5AE;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            /* Siempre ocupar ancho completo para evitar desalineos */
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .btn-primary:hover{ filter: brightness(0.95); }
+        .helper { color: #2F4F15; }
+    .success-message { color: #2F4F15; background: #E1F7D8; padding: 10px 12px; border-radius: 6px; display: none; width: 100%; box-sizing: border-box; margin-top: 6px; align-self: stretch; }
+
+        /* Responsive adjustments */
+        @media only screen and (max-width: 800px) {
+            .form-row { flex-direction: column; }
+            .contact-form { padding: 0 8px; }
+            .contact-form .field { width: 100%; }
+            section[style] { padding: 30px 6%; }
+        }
+
+        @media only screen and (max-width: 420px) {
+            .contact-form { gap: 10px; }
+            label { font-size: 14px; }
+            input[type="text"], input[type="email"], input[type="tel"], textarea { font-size: 15px; }
+            .btn-primary { padding: 10px; font-size: 15px; }
+        } 
+    </style>
+</head>
+<body>
+    <nav>
+        <p class="logo">HKR</p>
+        <ul>
+            <a href="../index.html">Inicio</a>
+            <a href="sobreNosotro.html">Sobre Nosotros</a>
+        </ul>
+        <menu id="burguer-menu">
+            <li class="linea"></li>
+            <li class="linea"></li>
+            <li class="linea"></li>
+        </menu>
+    </nav>
+    <main>
+        <section style="padding: 50px 10%; display: flex; flex-direction: column; gap: 20px;">
+            <h1>Contacto</h1>
+            <p class="helper">Para hacer un pedido o consultarnos, completá el formulario o enviános un correo. Al enviar, se abrirá tu cliente de correo para finalizar el pedido.</p>
+
+            <form id="contact-form" class="contact-form" action="#">
+                <div class="form-row">
+                    <div class="field">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono</label>
+                        <input id="telefono" name="telefono" type="tel" placeholder="(opcional)">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="ejemplo@dominio.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="cantidad">Cantidad aproximada</label>
+                        <input id="cantidad" name="cantidad" type="text" placeholder="Ej: 10 hamburguesas" required>
+                    </div>
+                </div>
+
+                <div class="field" style="display: flex; flex-direction: column;">
+                    <label for="mensaje">Detalle / Pedido</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Escribí tu pedido, fecha y horario de retiro" required></textarea>
+                </div>
+
+                <button class="btn-primary" type="submit">Enviar pedido</button>
+                <div id="success" class="success-message">Gracias — tu pedido está listo para enviar desde tu cliente de correo.</div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div style="display: flex; flex-direction: column; flex-wrap: wrap; padding: 10px 10%; width: 200px;">
+            <a href="contacto.html" class="link">Contacto</a>
+            <a href="sobreNosotro.html" class="link">Sobre Nosotros</a>
+        </div>
+        <p class="logo">HKR</p>
+
+    </footer>
+
+    <script src="../menu.js"></script>
+    <script>
+        // Al enviar, abrimos el cliente de correo con los datos (mailto). Si el usuario prefiere no usar mailto,
+        // se muestra un mensaje de confirmación en la página.
+        document.getElementById('contact-form').addEventListener('submit', function(e){
+            e.preventDefault();
+            const nombre = encodeURIComponent(document.getElementById('nombre').value);
+            const telefono = encodeURIComponent(document.getElementById('telefono').value);
+            const email = encodeURIComponent(document.getElementById('email').value);
+            const cantidad = encodeURIComponent(document.getElementById('cantidad').value);
+            const mensaje = encodeURIComponent(document.getElementById('mensaje').value);
+
+            const subject = encodeURIComponent('Pedido - Curso 5to 3ra');
+            const body = encodeURIComponent(
+                `Nombre: ${decodeURIComponent(nombre)}\nTeléfono: ${decodeURIComponent(telefono)}\nEmail: ${decodeURIComponent(email)}\nCantidad: ${decodeURIComponent(cantidad)}\n\nPedido:\n${decodeURIComponent(mensaje)}`
+            );
+
+            // mailto sin destinatario: usuario puede elegir su cliente y agregar destinatario
+            const mailto = `mailto:?subject=${subject}&body=${body}`;
+
+            // Abrir cliente de correo
+            window.location.href = mailto;
+
+            // Mostrar mensaje de éxito en la página
+            const success = document.getElementById('success');
+            success.style.display = 'block';
+            setTimeout(()=> success.style.display = 'none', 8000);
+            // opcional: limpiar formulario
+            // this.reset();
+        });
+    </script>
+</body>
+</html>
